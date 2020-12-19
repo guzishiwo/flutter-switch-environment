@@ -1,35 +1,38 @@
-- [引言](#org44514ed)
-- [实现方案](#orgf7e486d)
-  - [基本思路](#orge5deec7)
-  - [目录结构](#orgb10e2de)
-  - [定义配置类](#org92e8738)
-  - [初始化](#orge186bea)
-  - [运行](#orge3557be)
-  - [打包](#org0be5ffe)
-- [参考引用](#org5d228ff)
+- [引言](#orgd526720)
+- [实现方案](#orgf2e60e0)
+  - [基本思路](#org9726579)
+  - [目录结构](#orgdd86840)
+  - [定义配置类](#orgc9d054b)
+  - [初始化](#orgea06b2f)
+  - [运行](#orgaf5f802)
+  - [打包](#org86b69bb)
+  - [点赞、收藏、Star](#org9dc697f)
+- [附录](#org8e5d9f3)
+  - [代码仓库](#org644e00c)
+  - [参考引用](#org56190e1)
 
 
 
-<a id="org44514ed"></a>
+<a id="orgd526720"></a>
 
 # 引言
 
 APP开发中经常会碰到至少两个不同的环境: 一个测试环境，一个生产环境。 那如何在我们就测试开发后，不破坏现有的代码，切换到不同的环境呢？ fluter官方并没有给出推荐的方案, 在寻找使用不同的方式，认为多个main\_ *enviroment*.dart 是最优雅的办法。
 
 
-<a id="orgf7e486d"></a>
+<a id="orgf2e60e0"></a>
 
 # 实现方案
 
 
-<a id="orge5deec7"></a>
+<a id="org9726579"></a>
 
 ## 基本思路
 
-在项目lib目录下创建不同的 `main_enviroment.dart` 文件,来区分不同的环境, 而每个main\_<enviroment>.dart 包含不同的初始化配置, 开始全局注册
+在项目lib目录下创建不同的 `main_enviroment.dart` 文件, 来区分不同的环境, 而每个main\_<enviroment>.dart 包含不同的初始化配置, 开始全局注册
 
 
-<a id="orgb10e2de"></a>
+<a id="orgdd86840"></a>
 
 ## 目录结构
 
@@ -40,7 +43,7 @@ lib/main_release.dart  # 生产环境
 ```
 
 
-<a id="org92e8738"></a>
+<a id="orgc9d054b"></a>
 
 ## 定义配置类
 
@@ -64,7 +67,7 @@ class BuildEnvironment {
 ```
 
 
-<a id="orge186bea"></a>
+<a id="orgea06b2f"></a>
 
 ## 初始化
 
@@ -106,11 +109,11 @@ class BuildEnvironment {
     ```
 
 
-<a id="orge3557be"></a>
+<a id="orgaf5f802"></a>
 
 ## 运行
 
-1.  命令行 配置 `flutter run main_dev.dart`
+1.  命令行 配置 `flutter run lib/main_dev.dart`
 2.  Android stuio 配置 在配置文件指定运行main\_ *enviroment*.dart 举个例子测试环境 `lib/main_dev.dart`
 3.  Vistual studio 配置 在目录下.vscode/launch.json
 
@@ -119,7 +122,6 @@ class BuildEnvironment {
       "version": "1.0.0",
       "configurations": [
         {
-          "
           "program": "lib/main_dev.dart",
           "request": "launch",
           "type": "dart"
@@ -135,15 +137,32 @@ class BuildEnvironment {
     ```
 
 
-<a id="org0be5ffe"></a>
+<a id="org86b69bb"></a>
 
 ## 打包
 
 指定想要的文件 `flutter build -t lib/main_dev.dart`
 
 
-<a id="org5d228ff"></a>
+<a id="org9dc697f"></a>
 
-# 参考引用
+## 点赞、收藏、Star
 
-1.  [how-do-i-build-different-versions-of-my-flutter-app-for-qa-dev-prod](https://stackoverflow.com/a/47438620/5617935)
+
+<a id="org8e5d9f3"></a>
+
+# 附录
+
+
+<a id="org644e00c"></a>
+
+## 代码仓库
+
+[Github代码仓库](https://github.com/guzishiwo/flutter-switch-environment)
+
+
+<a id="org56190e1"></a>
+
+## 参考引用
+
+[how-do-i-build-different-versions-of-my-flutter-app-for-qa-dev-prod](https://stackoverflow.com/a/47438620/5617935)
